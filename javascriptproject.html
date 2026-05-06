@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rock Paper Scissors</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; text-align: center; background: #2c3e50; color: white; padding-top: 50px; }
+        .game-container { background: #34495e; display: inline-block; padding: 30px; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        .choices button { font-size: 3rem; margin: 10px; padding: 10px 20px; cursor: pointer; border: none; border-radius: 10px; transition: transform 0.2s; }
+        .choices button:hover { transform: scale(1.1); background: #ecf0f1; }
+        .result-box { margin-top: 20px; font-size: 1.5rem; min-height: 80px; }
+        #score { font-size: 1.2rem; color: #f1c40f; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="game-container">
+        <h1>Rock Paper Scissors</h1>
+        <div id="score">User: 0 | Computer: 0</div>
+        
+        <div class="choices">
+            <button onclick="play('🗿')">🗿</button>
+            <button onclick="play('📄')">📄</button>
+            <button onclick="play('✂️')">✂️</button>
+        </div>
+
+        <div class="result-box" id="result">
+            Pick your weapon!
+        </div>
+    </div>
+
+    <script>
+        let userScore = 0;
+        let compScore = 0;
+
+        function play(userChoice) {
+            const options = ['🗿', '📄', '✂️'];
+            const compChoice = options[Math.floor(Math.random() * 3)];
+            let result = "";
+
+            if (userChoice === compChoice) {
+                result = "It's a Tie!";
+            } else if (
+                (userChoice === '🗿' && compChoice === '✂️') ||
+                (userChoice === '📄' && compChoice === '🪨') ||
+                (userChoice === '✂️' && compChoice === '📄')
+            ) {
+                result = "You Win! 🎉";
+                userScore++;
+            } else {
+                result = "You Lose! 💀";
+                compScore++;
+            }
+
+            document.getElementById('result').innerHTML = `
+                You chose ${userChoice} vs Computer ${compChoice}<br>
+                <strong>${result}</strong>
+            `;
+            document.getElementById('score').innerText = `User: ${userScore} | Computer: ${compScore}`;
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
